@@ -5,12 +5,12 @@ import org.apache.hadoop.io.WritableComparator;
 import work.impl.InfoWritable;
 
 /**
- * 排序类，继承WritableComparator   年-月-成交量  按照成交量降序
+ * sorting by volume descending， inheritage the WritableComparator   year-month-volume
  */
 public class SortComparator extends WritableComparator {
 
     /**
-     * 调用父类的构造函数
+     * call the infowritable class
      */
     SortComparator() {
         super(InfoWritable.class, true);
@@ -18,7 +18,7 @@ public class SortComparator extends WritableComparator {
 
 
     /**
-     * 比较两个对象的大小，使用降序排列
+     * compare data,sort by descending
      */
     @Override
     public int compare(WritableComparable a, WritableComparable b) {

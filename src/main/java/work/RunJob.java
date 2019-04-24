@@ -38,16 +38,16 @@ public class RunJob {
             job.setOutputKeyClass(InfoWritable.class);
             job.setOutputValueClass(Text.class);
 
-            //设置分区数
+            //set #file output, if 2 then you will get part a part b
             job.setNumReduceTasks(1);
 
-            //设置排序
+            //set sorting
             job.setSortComparatorClass(SortComparator.class);
 
             //set groups
             job.setGroupingComparatorClass(GroupComparator.class);
 
-            FileInputFormat.addInputPath(job, new Path("src/main/resources/上证指数 日线.txt"));
+            FileInputFormat.addInputPath(job, new Path("/Users/yunajin/Desktop/Final/src/main/resources/baus.txt"));
 
             
             Path path = new Path("src/main/resources/test");
@@ -62,7 +62,7 @@ public class RunJob {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+          //  e.printStackTrace();
         }
     }
 }
