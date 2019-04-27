@@ -1,7 +1,7 @@
 package work.impl;
 
 
-import  org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
@@ -14,8 +14,8 @@ public class MyMapper extends Mapper<LongWritable, Text, InfoWritable, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         try {
-            String[] str = value.toString().split(",");//depends on data "\t"
-            String[] date = str[0].split("-");//sometimes with "/"
+            String[] str = value.toString().split("\t");
+            String[] date = str[0].split("/");
             int year = Integer.parseInt(date[2]);
             int month = Integer.parseInt(date[0]);
             int day = Integer.parseInt(date[1]);
@@ -27,7 +27,7 @@ public class MyMapper extends Mapper<LongWritable, Text, InfoWritable, Text> {
             info.setVolume(volume);
             context.write(info, value);
         } catch (Exception e) {
-           // e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }
